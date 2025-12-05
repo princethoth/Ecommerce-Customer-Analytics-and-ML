@@ -1,0 +1,5 @@
+Actual,Predicted,Count,Label
+Churn,Churn,285,True Positive
+Churn,No Churn,31,False Negative
+No Churn,Churn,167,False Positive
+No Churn,No Churn,687,True Negative
