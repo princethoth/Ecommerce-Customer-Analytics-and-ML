@@ -7,6 +7,14 @@
 
 An end-to-end analytics solution for e-commerce business featuring **SQL database queries**, **machine learning models**, and **interactive Power BI dashboards**. This project demonstrates the complete data science pipeline from data extraction to actionable business insights.
 
+### **Key Feature: Automated Data Pipeline**
+- **Scheduled automation** pulling 750+ products daily from Open Food Facts API
+- **Zero manual intervention** - runs automatically at 6 AM daily
+- **Live monitoring dashboard** tracking product catalog changes in real-time
+- **Production-ready** error handling, logging, and alerting system
+
+---
+
 ### Business Problem
 - Who are our most valuable customers?
 - Which products generate the most revenue?
@@ -21,12 +29,28 @@ An end-to-end analytics solution for e-commerce business featuring **SQL databas
 - Content-based product recommendation engine
 - 4 Power BI dashboards combining analytics + machine learning
 
+  ### **Automated Product Monitoring** 
+- **Python pipeline** pulling live product data from Open Food Facts API
+- **Scheduled automation** via Windows Task Scheduler (runs daily at 6 AM)
+- **SQL Server integration** - automatically updates database
+- **Live Power BI dashboard** - self-refreshing product catalog view
+- **Logging & monitoring** - tracks pipeline execution and errors
+
+---
+
 ### Impact
 - Identify high-value vs low-value customers
 - Predict and reduce churn by targeting high-risk customers
 - Improve retention via personalized product recommendations
 - Enhanced decision-making using clean, interactive dashboards
 
+
+### Automated Pipeline:
+- **Zero manual effort** - 750 products refreshed daily automatically
+- **Real-time monitoring** - instant visibility into product catalog
+- **Scalable infrastructure** - can expand to multiple API sources
+- **Production-ready** - error handling, logging, scheduling
+  
 ---
 
 **Size:** 
@@ -47,6 +71,22 @@ An end-to-end analytics solution for e-commerce business featuring **SQL databas
 SQL Database → Data Cleaning → EDA → ML Models → Power BI Dashboard
      ↓              ↓            ↓        ↓             ↓
   Queries      Feature Eng.  Insights  Predictions  Storytelling
+```
+## Data Pipeline
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    AUTOMATED PIPELINE                        │
+│                                                              │
+│  6:00 AM Daily → Python Script Executes                    │
+│       ↓                                                      │
+│  Open Food Facts API (750+ products)                        │
+│       ↓                                                      │
+│  Data Cleaning & Validation                                 │
+│       ↓                                                      │
+│  SQL Server (api_products_live table)                       │                           │
+│       ↓                                                      │
+│  Log File Generated (pipeline_log.txt)                      │
+└─────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -183,6 +223,38 @@ SQL Database → Data Cleaning → EDA → ML Models → Power BI Dashboard
 
 ---
 
+## Automation Details
+
+### Automated Pipeline Components:
+
+**1. Data Collection Script** (`automated_product_refresh.py`)
+```python
+# Key Features:
+- Pulls 750+ products from 15 categories
+- Error handling with try-catch blocks
+- Comprehensive logging system
+- API rate limiting (1 sec between requests)
+- Execution time tracking
+```
+
+**2. Scheduling**
+- **Windows Task Scheduler** configured
+- **Daily execution:** 6:00 AM
+- **Hourly monitoring:** Every hour until midnight
+- **Auto-restart:** On failure
+
+**3. Database Integration**
+- **Table:** `api_products_live`
+- **Columns:** product_id, product_name, brand, category, nutrition_grade, last_updated
+- **Update method:** Replace (full refresh daily)
+
+**4. Logging & Monitoring**
+- **Log file:** `pipeline_log.txt`
+- **Captures:** API calls, SQL operations, errors, execution time
+- **Format:** Timestamped entries with severity levels
+
+---
+
 ## Key Business Insights
 
 ### Customer Behavior
@@ -270,11 +342,16 @@ jupyter notebook
 ## Repository Structure
 ```
 E-Commerce-Analytics-Project/
-├── data/              # Raw, processed datasets and SQL queries and database scripts
-├── notebooks/         # Jupyter notebooks for analysis
-├── dashboards/        # Power BI dashboards and screenshots
-├── images/            # Visualizations and charts
-└── README.md          # Project documentation
+├── data/                   # Raw and processed datasets
+├── sql/                    # SQL queries and database scripts
+├── notebooks/              # Jupyter notebooks for analysis
+├── automation/             # Automated pipeline scripts
+│   ├── automated_product_refresh.py
+│   └── pipeline_log.txt
+├── dashboards/             # Power BI dashboards and screenshots
+├── images/                 # Visualizations and charts
+├── requirements.txt        # Python dependencies
+└── README.md               # Project documentation
 ```
 
 ---
