@@ -1,4 +1,4 @@
-# E-commerce Customer Analytics, Segmentation, Churn Prediction & Recommendation System
+# Open Foods Fact E-commerce Analytics
 
 
 **Power BI Interactive Dashboards:** [[Power BI](https://app.powerbi.com/view?r=eyJrIjoiYmEyOTI2NDUtMzVkYi00MzViLWI3YTItMjE3NzM0N2NlODIxIiwidCI6Ijk5NWM4MDQ5LWJmYjQtNGRmNy1hOTcxLTAzMzBhZmE4MDhjOSJ9)]
